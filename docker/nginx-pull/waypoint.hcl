@@ -22,7 +22,7 @@ runner {
   }
 }
 
-app "webserver" {
+app "nginx-pull" {
   
   // See https://developer.hashicorp.com/waypoint/docs/lifecycle/build
   build {
