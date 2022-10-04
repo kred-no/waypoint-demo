@@ -60,7 +60,7 @@ app "webserver" {
       #namespace = "default"
       replicas = 1
       probe_path = "/"
-      service_port = 8080
+      service_port = 80
       
       cpu {
         request = "50m"
