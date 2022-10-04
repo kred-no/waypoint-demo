@@ -1,4 +1,4 @@
-project = "waypoint-demo"
+project = "docker-nginx-ref"
 
 variable "registry_image" {
   type    = string
@@ -22,7 +22,7 @@ runner {
   }
 }
 
-app "nginx-pull" {
+app "nginx" {
   
   // See https://developer.hashicorp.com/waypoint/docs/lifecycle/build
   build {

@@ -1,4 +1,4 @@
-project = "waypoint-demo"
+project = "docker-nginx-build"
 
 variable "registry_username" {
   sensitive = true
@@ -32,11 +32,11 @@ runner {
   data_source "git" {
     url  = "https://github.com/kred-no/waypoint-demo.git"
     ref  = "HEAD"
-    path = "docker/nginx"
+    path = "docker/nginx-build"
   }
 }
 
-app "webserver" {
+app "nginx" {
   
   // See https://developer.hashicorp.com/waypoint/docs/lifecycle/build
   build {

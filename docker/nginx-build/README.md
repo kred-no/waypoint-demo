@@ -1,6 +1,6 @@
 # waypoint-demo
 
-HashiCorp Waypoint nginx example
+Build container image & push to registry.
 
 ## Build
 
