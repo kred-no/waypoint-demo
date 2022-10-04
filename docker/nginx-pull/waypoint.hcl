@@ -29,8 +29,10 @@ app "nginx-pull" {
     
     // See https://developer.hashicorp.com/waypoint/plugins/docker#docker-pull-builder
     use "docker-pull" {
+      
       // Not building the image.
       disable_entrypoint = true
+      local              = false
       
       image = var.registry_image
       tag   = var.registry_image_tag
