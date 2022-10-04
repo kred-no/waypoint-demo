@@ -76,7 +76,7 @@ app "webserver" {
   
   release {
     use "kubernetes" {
-      node_port = 35000
+      node_port = 30000 # Between 30000-32767
     }
   }
 }
