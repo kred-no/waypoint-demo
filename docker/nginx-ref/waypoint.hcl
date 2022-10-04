@@ -1,15 +1,15 @@
 project = "waypoint-demo"
 
 variable "registry_image" {
-  env     = ["REGISTRY_IMAGE"]
   type    = string
   default = "registry.hub.docker.com/library/nginx"
+  env     = ["REGISTRY_IMAGE"]
 }
 
 variable "registry_image_tag" {
-  env     = ["REGISTRY_IMAGE_TAG"]
   type    = string
   default = "alpine"
+  env     = ["REGISTRY_IMAGE_TAG"]
 }
 
 runner {
@@ -17,8 +17,8 @@ runner {
 
   data_source "git" {
     url  = "https://github.com/kred-no/waypoint-demo.git"
+    path = "docker/nginx-ref"
     ref  = "HEAD"
-    path = "docker/nginx-pull"
   }
 }
 
@@ -27,10 +27,8 @@ app "nginx-pull" {
   // See https://developer.hashicorp.com/waypoint/docs/lifecycle/build
   build {
     
-    // See https://developer.hashicorp.com/waypoint/plugins/docker#docker-pull-builder
-    use "docker-pull" {
-      disable_entrypoint = true // Not building the image.
-      
+    // See https://developer.hashicorp.com/waypoint/plugins/docker#docker-ref-builder
+    use "docker-ref" {
       image = var.registry_image
       tag   = var.registry_image_tag
     }
