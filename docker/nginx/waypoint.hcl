@@ -39,7 +39,7 @@ runner {
 app "webserver" {
   build {
     use "docker" {
-      disable_entrypoint = true
+      disable_entrypoint = false
     }
     
     registry {
@@ -56,6 +56,27 @@ app "webserver" {
   }
 
   deploy {
-    use "kubernetes" {}
+    use "kubernetes" {
+      namespace = "default"
+      replicas = 1
+      probe_path = "/"
+      service_port = 8080
+      
+      cpu {
+        request = "50m"
+        limit   = "100m"
+      }
+      
+      memory {
+        request = "25Mi"
+        limit   = "75Mi"
+      }
+    }
+  }
+  
+  release {
+    use "kubernetes" {
+      node_port = 35000
+    }
   }
 }
