@@ -57,7 +57,7 @@ app "webserver" {
 
   deploy {
     use "kubernetes" {
-      namespace = "default"
+      #namespace = "default"
       replicas = 1
       probe_path = "/"
       service_port = 8080
